@@ -47,47 +47,6 @@ A pixel-perfect, smooth, and responsive portfolio that showcases my skills, proj
 
 <br/>
 
----
-
-## 📸 Preview
-
-<div align="center">
-
-> 🔗 **[Click here to view the live portfolio →](https://1002manthan.github.io/manthan_portfolio/)**
-
-</div>
-
-<br/>
-
----
-
-## 🗂️ Project Structure
-
-```
-manthan_portfolio/
-│
-├── lib/
-│   ├── main.dart               # App entry point
-│   ├── screens/                # Individual page screens (Home, About, Projects, Contact)
-│   ├── widgets/                # Reusable UI components
-│   └── utils/                  # Constants, theme, helpers
-│
-├── web/
-│   ├── index.html              # Flutter web shell
-│   ├── manifest.json           # PWA manifest
-│   └── favicon.png             # Site favicon
-│
-├── assets/
-│   ├── images/                 # Profile photo, project screenshots
-│   └── fonts/                  # Custom fonts (if any)
-│
-├── pubspec.yaml                # Flutter dependencies & assets config
-└── README.md                   # You're reading this right now 😄
-```
-
-> ⚠️ Update this structure to match your actual file layout!
-
-<br/>
 
 ---
 
@@ -105,115 +64,6 @@ manthan_portfolio/
 
 ---
 
-## 🚀 Getting Started
-
-Want to run this locally or contribute? Here's how:
-
-### Prerequisites
-
-Make sure you have Flutter installed with web support enabled:
-
-```bash
-flutter --version        # Should be Flutter 3.x+
-flutter config --enable-web
-flutter doctor           # All green? You're good to go!
-```
-
-### Clone & Run
-
-```bash
-# Clone the repository
-git clone https://github.com/1002manthan/manthan_portfolio.git
-cd manthan_portfolio
-
-# Get dependencies
-flutter pub get
-
-# Run on web (Chrome)
-flutter run -d chrome
-```
-
-### Build for Production
-
-```bash
-flutter build web --release
-```
-The output will be in the `build/web/` folder — ready to deploy!
-
-<br/>
-
----
-
-## 🌍 Deployment on GitHub Pages
-
-This portfolio is deployed using **GitHub Pages** from the `build/web/` output.
-
-### Steps to deploy:
-
-**Option 1 — Manual deploy**
-```bash
-# Build the web app
-flutter build web --release --base-href "/manthan_portfolio/"
-
-# Copy build/web contents into your gh-pages branch or docs/ folder
-# Then push to GitHub and enable Pages in repo settings
-```
-
-**Option 2 — GitHub Actions (Auto Deploy)**
-
-Create `.github/workflows/deploy.yml`:
-
-```yaml
-name: Deploy Flutter Web to GitHub Pages
-
-on:
-  push:
-    branches: [ main ]
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.x'
-
-      - run: flutter pub get
-      - run: flutter build web --release --base-href "/manthan_portfolio/"
-
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/web
-```
-
-> 💡 With this workflow, every push to `main` auto-deploys your portfolio!
-
-<br/>
-
----
-
-## 📦 Dependencies
-
-```yaml
-# pubspec.yaml — key packages (update as per your actual deps)
-dependencies:
-  flutter:
-    sdk: flutter
-  url_launcher: ^6.0.0       # Open links
-  google_fonts: ^6.0.0       # Beautiful fonts
-  animate_do: ^3.0.0         # Smooth animations
-  flutter_svg: ^2.0.0        # SVG support
-```
-
-> ⚠️ Replace with your actual `pubspec.yaml` dependencies!
-
-<br/>
-
----
-
 ## 📬 Connect With Me
 
 <div align="center">
@@ -226,11 +76,7 @@ I'm always open to exciting opportunities, collaborations, or just a good conver
 [![Portfolio](https://img.shields.io/badge/Portfolio-Live%20Site-00ff88?style=for-the-badge&logo=googlechrome&logoColor=white)](https://1002manthan.github.io/manthan_portfolio/)
 
 <br/>
-
-> 💡 *Add your LinkedIn, email, or Twitter badge here!*
-
 </div>
-
 <br/>
 
 ---
