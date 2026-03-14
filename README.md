@@ -40,7 +40,6 @@ A pixel-perfect, smooth, and responsive portfolio that showcases my skills, proj
 ## ✨ Features
 
 - 🦋 **Built with Flutter Web** — a real app experience in the browser
-- 📱 **Fully responsive** — adapts beautifully across mobile, tablet & desktop
 - 🎨 **Smooth animations** — Flutter's powerful animation engine at work
 - ⚡ **Fast & performant** — optimized Flutter web build
 - 🌐 **Deployed on GitHub Pages** — free, fast, always online
