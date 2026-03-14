@@ -14,9 +14,9 @@
 <br/>
 
 ![Status](https://img.shields.io/badge/STATUS-LIVE%20%26%20RUNNING-00ff88?style=flat-square&labelColor=111)
-![Made with HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
-![Made with CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
-![Made with JS](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-0175C2?style=flat-square&logo=dart&logoColor=white)
+![Flutter Web](https://img.shields.io/badge/Flutter%20Web-Enabled-54C5F8?style=flat-square&logo=flutter&logoColor=white)
 ![Hosted on GitHub Pages](https://img.shields.io/badge/Hosted%20on-GitHub%20Pages-181717?style=flat-square&logo=github)
 
 <br/><br/>
@@ -27,11 +27,11 @@
 
 ## 🧠 About This Project
 
-This is my **personal portfolio website** — a fully hand-crafted, responsive showcase of who I am, what I build, and how I think. No templates. No drag-and-drop builders. Just clean code and a vision.
+This is my **personal portfolio website**, built entirely with **Flutter Web** — because why settle for plain HTML/CSS when you can bring the full power of Flutter to the browser? 🚀
 
-Built to leave a mark. Designed to tell a story. Engineered to perform.
+A pixel-perfect, smooth, and responsive portfolio that showcases my skills, projects, and journey as a developer — all compiled from a single Dart codebase and deployed live on GitHub Pages.
 
-> *Every pixel was placed with purpose. Every line of code was written by hand.*
+> *Built with Flutter. Runs everywhere. Looks stunning.*
 
 <br/>
 
@@ -39,12 +39,12 @@ Built to leave a mark. Designed to tell a story. Engineered to perform.
 
 ## ✨ Features
 
-- ⚡ **Blazing fast** — lightweight, no heavy frameworks
-- 📱 **Fully responsive** — flawless on mobile, tablet & desktop
-- 🎨 **Smooth animations** — polished transitions and micro-interactions
-- 🌙 **Modern UI/UX** — clean design with attention to detail
-- 🚀 **Deployed on GitHub Pages** — always live, always accessible
-- 🔗 **Single Page Experience** — seamless navigation without page reloads
+- 🦋 **Built with Flutter Web** — a real app experience in the browser
+- 📱 **Fully responsive** — adapts beautifully across mobile, tablet & desktop
+- 🎨 **Smooth animations** — Flutter's powerful animation engine at work
+- ⚡ **Fast & performant** — optimized Flutter web build
+- 🌐 **Deployed on GitHub Pages** — free, fast, always online
+- 🎯 **Single codebase** — could run on Android, iOS, Web & Desktop
 
 <br/>
 
@@ -67,13 +67,23 @@ Built to leave a mark. Designed to tell a story. Engineered to perform.
 ```
 manthan_portfolio/
 │
-├── index.html          # Main HTML — the skeleton of everything
-├── style.css           # All the visual magic lives here
-├── script.js           # Interactions, animations & logic
+├── lib/
+│   ├── main.dart               # App entry point
+│   ├── screens/                # Individual page screens (Home, About, Projects, Contact)
+│   ├── widgets/                # Reusable UI components
+│   └── utils/                  # Constants, theme, helpers
+│
+├── web/
+│   ├── index.html              # Flutter web shell
+│   ├── manifest.json           # PWA manifest
+│   └── favicon.png             # Site favicon
+│
 ├── assets/
-│   ├── images/         # Profile photo, project screenshots
-│   └── icons/          # Social & skill icons
-└── README.md           # You're reading this right now 😄
+│   ├── images/                 # Profile photo, project screenshots
+│   └── fonts/                  # Custom fonts (if any)
+│
+├── pubspec.yaml                # Flutter dependencies & assets config
+└── README.md                   # You're reading this right now 😄
 ```
 
 > ⚠️ Update this structure to match your actual file layout!
@@ -86,10 +96,11 @@ manthan_portfolio/
 
 | Layer | Technology |
 |-------|-----------|
-| 🏗️ Structure | HTML5 (Semantic) |
-| 🎨 Styling | CSS3 (Flexbox, Grid, Animations) |
-| ⚙️ Logic | Vanilla JavaScript (ES6+) |
+| 🦋 Framework | Flutter (Web) |
+| 💙 Language | Dart |
+| 🎨 UI | Flutter Widgets & Custom Painters |
 | 🚀 Deployment | GitHub Pages |
+| 🔧 Build | `flutter build web` |
 
 <br/>
 
@@ -97,39 +108,108 @@ manthan_portfolio/
 
 ## 🚀 Getting Started
 
-Want to run this locally or fork it? Here's how:
+Want to run this locally or contribute? Here's how:
 
-### Clone the repo
+### Prerequisites
+
+Make sure you have Flutter installed with web support enabled:
+
 ```bash
+flutter --version        # Should be Flutter 3.x+
+flutter config --enable-web
+flutter doctor           # All green? You're good to go!
+```
+
+### Clone & Run
+
+```bash
+# Clone the repository
 git clone https://github.com/1002manthan/manthan_portfolio.git
 cd manthan_portfolio
+
+# Get dependencies
+flutter pub get
+
+# Run on web (Chrome)
+flutter run -d chrome
 ```
 
-### Open in browser
+### Build for Production
+
 ```bash
-# Just open index.html directly — no build tools needed!
-open index.html
-
-# OR if you have VS Code with Live Server:
-# Right-click index.html → "Open with Live Server"
+flutter build web --release
 ```
-
-That's it. No `npm install`. No config files. No nonsense. Just open and go. 🎉
+The output will be in the `build/web/` folder — ready to deploy!
 
 <br/>
 
 ---
 
-## 🌍 Deployment
+## 🌍 Deployment on GitHub Pages
 
-This portfolio is hosted for **free** using **GitHub Pages**.
+This portfolio is deployed using **GitHub Pages** from the `build/web/` output.
 
-To deploy your own fork:
+### Steps to deploy:
 
-1. Fork this repository
-2. Go to **Settings → Pages**
-3. Set source to `main` branch → `/ (root)`
-4. Hit **Save** — your site will be live at `https://<your-username>.github.io/manthan_portfolio/`
+**Option 1 — Manual deploy**
+```bash
+# Build the web app
+flutter build web --release --base-href "/manthan_portfolio/"
+
+# Copy build/web contents into your gh-pages branch or docs/ folder
+# Then push to GitHub and enable Pages in repo settings
+```
+
+**Option 2 — GitHub Actions (Auto Deploy)**
+
+Create `.github/workflows/deploy.yml`:
+
+```yaml
+name: Deploy Flutter Web to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.x'
+
+      - run: flutter pub get
+      - run: flutter build web --release --base-href "/manthan_portfolio/"
+
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+```
+
+> 💡 With this workflow, every push to `main` auto-deploys your portfolio!
+
+<br/>
+
+---
+
+## 📦 Dependencies
+
+```yaml
+# pubspec.yaml — key packages (update as per your actual deps)
+dependencies:
+  flutter:
+    sdk: flutter
+  url_launcher: ^6.0.0       # Open links
+  google_fonts: ^6.0.0       # Beautiful fonts
+  animate_do: ^3.0.0         # Smooth animations
+  flutter_svg: ^2.0.0        # SVG support
+```
+
+> ⚠️ Replace with your actual `pubspec.yaml` dependencies!
 
 <br/>
 
@@ -146,9 +226,9 @@ I'm always open to exciting opportunities, collaborations, or just a good conver
 [![GitHub](https://img.shields.io/badge/GitHub-1002manthan-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/1002manthan)
 [![Portfolio](https://img.shields.io/badge/Portfolio-Live%20Site-00ff88?style=for-the-badge&logo=googlechrome&logoColor=white)](https://1002manthan.github.io/manthan_portfolio/)
 
-</br>
+<br/>
 
-> 💡 *Add your LinkedIn, Twitter, or email badge here!*
+> 💡 *Add your LinkedIn, email, or Twitter badge here!*
 
 </div>
 
@@ -169,7 +249,7 @@ Just don't copy it and call it your own. Give credit where it's due. 🤝
 
 <div align="center">
 
-Crafted with **☕ coffee**, **💻 code**, and a whole lot of **❤️**
+Built with **💙 Flutter**, **☕ coffee**, and a whole lot of **❤️**
 
 ⭐ **If you like what you see, drop a star on the repo!** ⭐
 
