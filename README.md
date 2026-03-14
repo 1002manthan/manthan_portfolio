@@ -31,7 +31,9 @@ This is my **personal portfolio website**, built entirely with **Flutter Web** â
 
 A pixel-perfect, smooth, and responsive portfolio that showcases my skills, projects, and journey as a developer â€” all compiled from a single Dart codebase and deployed live on GitHub Pages.
 
-> *Built with Flutter. Runs everywhere. Looks stunning.*
+> *I do have made this website using flutter but for making website live I have directly deployed the flutter web build here. if you want whole flutter source code feel free to connect with me.*
+
+
 
 <br/>
 
