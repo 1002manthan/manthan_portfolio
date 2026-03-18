@@ -9,55 +9,147 @@
   <link rel="icon" type="image/png" href="mnthn.png">
   <title>Manthan Suthar — Portfolio</title>
   <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
   <script>
-    const serviceWorkerVersion = "3825294217" /* Flutter's service worker is deprecated and will be removed in a future Flutter release. */;
+    const serviceWorkerVersion = "1661315039" /* Flutter's service worker is deprecated and will be removed in a future Flutter release. */;
   </script>
   <script src="flutter.js" defer></script>
   <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      background-color: #FAFAFA;
+      background-color: #0C0C11;
       margin: 0;
       padding: 0;
     }
+
     #loading {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      font-family: 'Georgia', serif;
-      color: #E8173A;
-      font-size: 1.2rem;
-      letter-spacing: 0.1em;
+      background: #0C0C11;
+      position: relative;
+      overflow: hidden;
     }
-    .loader {
-      width: 40px; height: 40px;
-      border: 3px solid #FFE4E8;
-      border-top-color: #E8173A;
+
+    /* Background dot grid */
+    #loading::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(232,23,58,0.07) 1.5px, transparent 1.5px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+
+    /* Ambient glow blob behind everything */
+    #loading::after {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(232,23,58,0.12) 0%, transparent 70%);
       border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin-bottom: 20px;
+      pointer-events: none;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .loading-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Spinner */
+    .spinner-wrap {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      animation: fadeDown 0.7s 0.3s ease both;
+    }
+
+    .spinner {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(232,23,58,0.18);
+      border-top-color: #E8173A;
+      animation: spin 0.9s linear infinite;
+    }
+
+    /* Glowing center dot */
+    .spinner-dot {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px;
+      height: 6px;
+      background: #E8173A;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(232,23,58,0.8);
+      animation: pulse 0.9s ease-in-out infinite alternate;
+    }
+
+    /* Bottom label */
+    .loading-label {
+      margin-top: 22px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10.5px;
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(240,237,232,0.25);
+      animation: fadeDown 0.7s 0.45s ease both;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes pulse {
+      from { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+      to   { opacity: 1;   transform: translate(-50%, -50%) scale(1.1); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0);     }
+    }
   </style>
 </head>
 <body>
-  <div id="loading">
-    <div class="loader"></div>
-    Loading Portfolio...
+<div id="loading">
+  <div class="loading-content">
+    <div class="spinner-wrap">
+      <div class="spinner"></div>
+      <div class="spinner-dot"></div>
+    </div>
+    <div class="loading-label">Loading Portfolio</div>
   </div>
-  <script>
-    window.addEventListener('load', function(ev) {
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: { serviceWorkerVersion: serviceWorkerVersion },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            document.getElementById('loading').style.display = 'none';
-            appRunner.runApp();
-          });
-        }
-      });
+</div>
+
+<script>
+  window.addEventListener('load', function(ev) {
+    _flutter.loader.loadEntrypoint({
+      serviceWorker: { serviceWorkerVersion: serviceWorkerVersion },
+      onEntrypointLoaded: function(engineInitializer) {
+        engineInitializer.initializeEngine().then(function(appRunner) {
+          // Fade out smoothly before revealing Flutter
+          var el = document.getElementById('loading');
+          setTimeout(function() {
+            el.style.transition = 'opacity 0.6s ease';
+            el.style.opacity = '0';
+            setTimeout(function() {
+              el.style.display = 'none';
+              appRunner.runApp();
+            }, 600);
+          }, 3500);
+        });
+      }
     });
-  </script>
+  });
+</script>
 </body>
 </html>
